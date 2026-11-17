@@ -1,0 +1,208 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Student</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            padding: 20px;
+        }
+
+        form {
+            width: 400px;
+            background: white;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+        }
+
+        h1 {
+            text-align: center;
+            color: #5b4bc4;
+            margin-bottom: 25px;
+            font-size: 27px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 7px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 11px;
+            border: 1px solid #ccc;
+            border-radius: 7px;
+            outline: none;
+            font-size: 15px;
+            margin-bottom: 17px;
+            transition: 0.3s;
+        }
+
+        input:focus, select:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 6px rgba(102,126,234,0.4);
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #333;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 450px) {
+            form {
+                width: 100%;
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <form action="/student/edit/{{std[0]}}" method="post">
+
+        <h1>🎓 Update Student</h1>
+
+        <label>Name:</label>
+        <input type="text" name="name" placeholder="Enter student name" required value={{std[1]}}>
+
+        <label>Age:</label>
+        <input type="number" name="age" placeholder="Enter age" required value={{std[2]}}>
+
+        <label>Gender:</label>
+        <input type="text" name="gender" placeholder="Enter gender" required value={{std[3]}}>
+
+        <label>Marks:</label>
+        <input type="number" name="marks" placeholder="Enter marks" required value={{std[4]}}>
+
+        <label>Course:</label>
+        <input type="text" name="course" placeholder="Enter course name" required value={{std[5]}}>
+
+        <label>Image:</label>
+        <input type="text" name="image" placeholder="Enter image URL" value={{std[6]}}>
+
+        <label>Status:</label>
+        <select name="status" required>
+            <option value="">Select</option>
+            <option value="1">Present</option>
+            <option value="0">Absent</option>
+        </select>
+
+        <button type="submit">Update</button>
+
+    </form>
+
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Edit Student</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { font-family: system-ui, sans-serif; background: #f4f6f9; margin: 0; color: #222; }
+    nav { background: #1f2a44; padding: 14px 24px; display: flex; justify-content: space-between; align-items: center; }
+    nav a.brand { color: #fff; text-decoration: none; font-weight: 600; }
+    .container { max-width: 1000px; margin: 24px auto; padding: 0 16px; }
+
+    .btn { display: inline-block; padding: 8px 14px; border: none; border-radius: 6px; background: #2f6fed; color: #fff; text-decoration: none; cursor: pointer; font-size: 14px; }
+    .btn:hover { opacity: .9; }
+    .btn.green { background: #1e9e5a; }
+    .btn.grey { background: #6b7280; }
+
+    .card { background: #fff; padding: 24px; border-radius: 10px; box-shadow: 0 1px 6px rgba(0,0,0,.1); max-width: 500px; margin: auto; }
+
+    label { display: block; margin: 12px 0 4px; font-weight: 600; }
+    input, select { width: 100%; padding: 9px; border: 1px solid #ccc; border-radius: 6px; font-size: 14px; }
+    input:focus, select:focus { outline: none; border-color: #2f6fed; }
+    .form-buttons { margin-top: 24px; }
+  </style>
+</head>
+<body>
+  <nav>
+    <a class="brand" href="/">🎓 Student Manager</a>
+    <a class="btn green" href="/students/add">+ Add Student</a>
+  </nav>
+
+  <div class="container">
+    {% if std %}
+    <div class="card">
+      <h2>Edit Student #{{ std[0] }}</h2>
+      <form method="post" action="/student/edit/{{ std[0] }}">
+        <label>Name (3-25 chars)</label>
+        <input type="text" name="name" value="{{ std[1] }}" minlength="3" maxlength="25" required>
+
+        <label>Age (18-60)</label>
+        <input type="number" name="age" value="{{ std[2] }}" min="18" max="60" required>
+
+        <label>Gender</label>
+        <select name="gender" required>
+          <option value="Male"   {% if std[3] == 'Male' %}selected{% endif %}>Male</option>
+          <option value="Female" {% if std[3] == 'Female' %}selected{% endif %}>Female</option>
+          <option value="Other"  {% if std[3] == 'Other' %}selected{% endif %}>Other</option>
+        </select>
+
+        <label>Marks (1-100)</label>
+        <input type="number" name="marks" value="{{ std[4] }}" min="1" max="100" required>
+
+        <label>Course</label>
+        <input type="text" name="course" value="{{ std[5] }}" required>
+
+        <label>Image URL</label>
+        <input type="url" name="image" value="{{ std[6] }}" required>
+
+        <label>Status</label>
+        <select name="status" required>
+          <option value="1" {% if std[7] == 1 %}selected{% endif %}>Active</option>
+          <option value="0" {% if std[7] != 1 %}selected{% endif %}>Inactive</option>
+        </select>
+
+        <div class="form-buttons">
+          <button class="btn green" type="submit">Update Student</button>
+          <a class="btn grey" href="/">Cancel</a>
+        </div>
+      </form>
+    </div>
+    {% else %}
+    <div class="card">
+      <p>Student not found.</p>
+      <a class="btn grey" href="/">← Back</a>
+    </div>
+    {% endif %}
+  </div>
+</body>
+</html>

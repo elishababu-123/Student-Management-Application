@@ -1,0 +1,243 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ std[1] }}</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --ink: #14213d;
+            --ink-soft: #1d2f55;
+            --paper: #f8f9fb;
+            --line: #d9dee6;
+            --text: #1c2433;
+            --muted: #5b6575;
+            --accent: #1f6f6b;
+            --accent-dark: #17554f;
+            --accent-tint: #e3f0ee;
+            --danger: #a43a3a;
+            --danger-tint: #f6e4e4;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 48px 16px;
+            font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(900px 500px at 15% -10%, var(--ink-soft), transparent 70%),
+                var(--ink);
+        }
+
+        .card {
+            width: 100%;
+            max-width: 460px;
+            padding: 36px;
+            background: var(--paper);
+            border-radius: 16px;
+            border-top: 4px solid var(--accent);
+            box-shadow:
+                0 1px 2px rgba(10, 18, 36, 0.2),
+                0 24px 48px -12px rgba(10, 18, 36, 0.45);
+        }
+
+        .profile {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding-bottom: 24px;
+            margin-bottom: 8px;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .avatar {
+            flex: none;
+            width: 96px;
+            height: 96px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #fff;
+            box-shadow: 0 0 0 2px var(--accent), 0 6px 16px rgba(10, 18, 36, 0.2);
+        }
+
+        h1 {
+            margin: 0 0 8px;
+            font-family: "Fraunces", Georgia, serif;
+            font-weight: 600;
+            font-size: 1.75rem;
+            line-height: 1.15;
+            letter-spacing: -0.01em;
+            color: var(--ink);
+            overflow-wrap: anywhere;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border-radius: 999px;
+            color: var(--accent-dark);
+            background: var(--accent-tint);
+        }
+
+        .badge.inactive {
+            color: var(--danger);
+            background: var(--danger-tint);
+        }
+
+        .details { margin: 0; }
+
+        .details div {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            padding: 14px 0;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .details div:last-child { border-bottom: 0; }
+
+        dt {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--muted);
+        }
+
+        dd {
+            margin: 0;
+            font-size: 0.95rem;
+            font-weight: 500;
+            text-align: right;
+        }
+
+        .back {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 16px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            transition: background 0.15s ease;
+        }
+
+        .back:hover { background: rgba(255, 255, 255, 0.2); }
+
+        .back:focus-visible {
+            outline: 2px solid #fff;
+            outline-offset: 3px;
+        }
+
+        @media (max-width: 480px) {
+            .card { padding: 28px 22px; }
+            .profile { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="profile">
+            {% if std[6] %}<img class="avatar" src="{{ std[6] }}" alt="{{ std[1] }}">{% endif %}
+            <div>
+                <h1>{{ std[1] }}</h1>
+                <span class="badge {{ 'inactive' if std[7] != 1 }}">{{ "Active" if std[7] == 1 else "Inactive" }}</span>
+            </div>
+        </div>
+
+        <dl class="details">
+            <div><dt>ID</dt><dd>{{ std[0] }}</dd></div>
+            <div><dt>Age</dt><dd>{{ std[2] }}</dd></div>
+            <div><dt>Gender</dt><dd>{{ std[3] }}</dd></div>
+            <div><dt>Marks</dt><dd>{{ std[4] }}</dd></div>
+            <div><dt>Course</dt><dd>{{ std[5] }}</dd></div>
+        </dl>
+    </div>
+
+    <a class="back" href="/">&larr; Back</a>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Student Details</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { font-family: system-ui, sans-serif; background: #f4f6f9; margin: 0; color: #222; }
+    nav { background: #1f2a44; padding: 14px 24px; display: flex; justify-content: space-between; align-items: center; }
+    nav a.brand { color: #fff; text-decoration: none; font-weight: 600; }
+    .container { max-width: 1000px; margin: 24px auto; padding: 0 16px; }
+
+    .btn { display: inline-block; padding: 8px 14px; border: none; border-radius: 6px; background: #2f6fed; color: #fff; text-decoration: none; cursor: pointer; font-size: 14px; }
+    .btn:hover { opacity: .9; }
+    .btn.green { background: #1e9e5a; }
+    .btn.red { background: #d64545; }
+    .btn.grey { background: #6b7280; }
+
+    .card { background: #fff; padding: 24px; border-radius: 10px; box-shadow: 0 1px 6px rgba(0,0,0,.1); max-width: 500px; margin: auto; }
+    .profile-card { text-align: center; }
+    .avatar { width: 140px; height: 140px; object-fit: cover; border-radius: 50%; }
+
+    .badge { padding: 3px 10px; border-radius: 12px; font-size: 12px; color: #fff; }
+    .badge.active { background: #1e9e5a; }
+    .badge.inactive { background: #d64545; }
+
+    .actions { display: flex; gap: 6px; align-items: center; justify-content: center; }
+    .actions form { margin: 0; }
+  </style>
+</head>
+<body>
+  <nav>
+    <a class="brand" href="/">🎓 Student Manager</a>
+    <a class="btn green" href="/students/add">+ Add Student</a>
+  </nav>
+
+  <div class="container">
+    {% if std %}
+    <div class="card profile-card">
+      <img class="avatar" src="{{ std[6] }}" alt="{{ std[1] }}">
+      <h2>{{ std[1] }}</h2>
+      <p><b>ID:</b> {{ std[0] }}</p>
+      <p><b>Age:</b> {{ std[2] }}</p>
+      <p><b>Gender:</b> {{ std[3] }}</p>
+      <p><b>Marks:</b> {{ std[4] }}</p>
+      <p><b>Course:</b> {{ std[5] }}</p>
+      <p><b>Status:</b>
+        {% if std[7] == 1 %}<span class="badge active">Active</span>
+        {% else %}<span class="badge inactive">Inactive</span>{% endif %}
+      </p>
+      <div class="actions">
+        <a class="btn grey" href="/">← Back</a>
+        <a class="btn" href="/student/edit/{{ std[0] }}">Edit</a>
+        <form method="post" action="/std/delete/{{ std[0] }}" onsubmit="return confirm('Delete this student?')">
+          <button class="btn red" type="submit">Delete</button>
+        </form>
+      </div>
+    </div>
+    {% else %}
+    <div class="card">
+      <p>Student not found.</p>
+      <a class="btn grey" href="/">← Back</a>
+    </div>
+    {% endif %}
+  </div>
+</body>
+</html>
